@@ -1,4 +1,4 @@
-package com.santander.meetup.meetingGuest.model;
+package com.santander.meetup.guest.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -21,7 +21,7 @@ import lombok.Data;
 @Data
 @Table(name="guest_header")
 
-public class Meeting implements Serializable {
+public class GuestDetail implements Serializable {
 
 	/**
 	 * 
