@@ -1,4 +1,4 @@
-package com.santander.meetup.meetingGuest.model;
+package com.santander.meetup.guest.model;
 
 import java.io.Serializable;
 
@@ -49,6 +49,6 @@ public class Guest implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "ID", insertable=false, updatable=false)
 	@JsonIgnore
-	private Meeting meeting;
+	private GuestDetail meeting;
 	
 }

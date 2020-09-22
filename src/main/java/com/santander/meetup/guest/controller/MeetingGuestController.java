@@ -1,4 +1,4 @@
-package com.santander.meetup.meetingGuest.controller;
+package com.santander.meetup.guest.controller;
 
 import javax.validation.Valid;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.santander.meetup.meetingGuest.model.Meeting;
-import com.santander.meetup.meetingGuest.service.MeetingGuestService;
+import com.santander.meetup.guest.model.GuestDetail;
+import com.santander.meetup.guest.service.MeetingGuestService;
 
 @EnableResourceServer
 @RestController
@@ -25,9 +25,9 @@ public class MeetingGuestController {
 	private MeetingGuestService meetingGuestService;
 	
 	@PostMapping("/guest")
-	  public ResponseEntity<?> postMeetingGuest(@Valid @RequestBody Meeting meetingGuest) {
+	  public ResponseEntity<?> postMeetingGuest(@Valid @RequestBody GuestDetail meetingGuest) {
 	    
-		Meeting saveMeetingGuest = meetingGuestService.saveMeetingGuest(meetingGuest);
+		GuestDetail saveMeetingGuest = meetingGuestService.saveMeetingGuest(meetingGuest);
 		return new ResponseEntity<>(saveMeetingGuest, HttpStatus.OK);
 	}
 	    

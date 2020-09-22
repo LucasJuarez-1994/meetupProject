@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.santander.meetup.room.model.Room;
-import com.santander.meetup.room.model.RoomState;
 import com.santander.meetup.room.service.RoomService;
 
 @EnableResourceServer
@@ -40,7 +39,6 @@ public class RoomController {
 			Optional<Room> roomExist = roomService.getRoom(room.getId());
 		
 			room.setCreatedDate(roomExist.get().getCreatedDate());
-			room.setCreatedBy(roomExist.get().getCreatedBy());
 			
 			Room saveRoom = roomService.saveRoom(room);
 			return new ResponseEntity<>(saveRoom, HttpStatus.OK);
@@ -63,13 +61,9 @@ public class RoomController {
 	@DeleteMapping("/room/{id}")
 	  public ResponseEntity<?> deleteRoom(@PathVariable("id") Long id, HttpServletRequest request) {      
 		  Optional<Room> room = roomService.getRoom(id);
-		  if (room.isPresent() && room.get().getState() == RoomState.OPEN) {
-			  roomService.deleteRoom(id);
+		  if (room.isPresent()) {
 			  return new ResponseEntity<>(room.get(), HttpStatus.OK);
-		  }  else if(room.get().getState() == RoomState.CLOSED) {
-			  return new ResponseEntity<>("Room id:"+id +" not in OPEN state", HttpStatus.CONFLICT);
-		  }
-			  return new ResponseEntity<>("Room id:"+id +" not found", HttpStatus.NOT_FOUND);
+		  }  else return new ResponseEntity<>("Room id:"+id +" not found", HttpStatus.NOT_FOUND);
 	    
 
 	  }

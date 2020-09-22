@@ -1,0 +1,7 @@
+CREATE TABLE `guest_detail` (
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(50) COLLATE utf8_bin NOT NULL,
+  `SURNAME` varchar(50) COLLATE utf8_bin NOT NULL,
+  `EMAIL` varchar(80) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
